@@ -1,4 +1,4 @@
-# readme first: https://developers.google.com/calendar/api/quickstart/python
+# readme first: create a credentials file and token file following this reference https://developers.google.com/calendar/api/quickstart/python 
 
 from __future__ import print_function
 
