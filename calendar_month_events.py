@@ -1,4 +1,4 @@
-# readme first: create a credentials file following this reference https://developers.google.com/calendar/api/quickstart/python 
+# readme https://developers.google.com/calendar/api/quickstart/python 
 
 from __future__ import print_function
 
@@ -48,8 +48,8 @@ def main():
         monthAgo = today - relativedelta(months=1)
         tmax = today.isoformat('T') + "Z"
         tmin = monthAgo.isoformat('T') + "Z"
-        print('Getting events')
-        events_result = service.events().list(calendarId='primary', timeMin=tmin, timeMax=tmax,
+        print('Getting events - ref https://developers.google.com/calendar/api/v3/reference/events')
+        events_result = service.events().list(calendarId='primary', timeMin=tmin, timeMax=tmax,  
                                               maxResults=1000, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
@@ -61,7 +61,8 @@ def main():
         # Prints the start and name of the next 10 events
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            print(start, event['summary'])
+            theend = event['end'].get('dateTime', event['end'].get('date'))
+            print(start, theend, event['eventType'], event['organizer'], event['summary'])
 
     except HttpError as error:
         print('An error occurred: %s' % error)
